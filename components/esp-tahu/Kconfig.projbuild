@@ -1,0 +1,8 @@
+menu "Sparkplug Configuration"
+    config SPARKPLUG_GROUP_ID
+        string "Sparkplug Group ID"
+        default "env_sensors"
+        help
+            The Sparkplug Group ID associated with this application's
+             MQTT data
+endmenu

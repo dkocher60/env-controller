@@ -1,0 +1,17 @@
+menu "Temp Controller Configuration"
+    config TC_DEFAULT_SETPOINT
+        int "Default Setpoint"
+        default 40
+        help
+            Default temperature setpoint to use in °F
+    config TC_OUT_GPIO_PIN
+        int "GPIO Output PIN"
+        default 15
+        help
+            GPIO Pin which fridge/freezer enable mechanism is tied to
+    config TC_DEADBAND
+        int "Temperature Deadband"
+        default 3
+        help
+            Temperature (°F) to cool below setpoint before disabling fridge/freezer
+endmenu

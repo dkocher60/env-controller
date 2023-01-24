@@ -1,0 +1,6 @@
+[submodule "components/esp-wolfssl"]
+	path = components/esp-wolfssl
+	url = https://github.com/espressif/esp-wolfssl
+[submodule "components/esp-tahu/tahu"]
+	path = components/esp-tahu/tahu
+	url = https://github.com/eclipse/tahu

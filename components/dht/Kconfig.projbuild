@@ -1,0 +1,31 @@
+menu "DHT Sensor Configuration"
+    choice DHT_SENSOR_TYPE
+        prompt "DHT Sensor Type"
+        help
+            Select the type of DHT sensor attached
+        
+        config DHT_SENSOR_TYPE_11
+            bool "DHT11"
+        config DHT_SENSOR_TYPE_12
+            bool "DHT12"
+        config DHT_SENSOR_TYPE_21
+            bool "DHT21"
+        config DHT_SENSOR_TYPE_22
+            bool "DHT22"
+        config DHT_SENSOR_TYPE_AM2301
+            bool "AM2301"
+    endchoice
+
+    config DHT_GPIO
+        int "GPIO Pin"
+        default 13
+        help
+            Enter the GPIO Pin that the sensor is connected to
+    
+    config DHT_READ_RATE
+        int "Sensor Read Rate"
+        default 5000
+        range 2000 30000
+        help
+            Enter the time in ms between sensor reads
+endmenu

@@ -1,0 +1,51 @@
+menu "MQTT Configuration"
+    config MQTT_BROKER_URI
+        string "MQTT Broker URI"
+        default "mqtts://broker.com:8883"
+        help
+            Full URI to MQTT broker (including port)
+    config MQTT_MAX_ATTEMPTS
+        int "Maximum connection attempts"
+        default 3
+        help
+            Maximum times to attempt a connection to the MQTT Broker
+    config MQTT_RECONNECT_DELAY
+        int "Delay in seconds between reconnection attempts"
+        default 10
+        help
+            Time in seconds to delay before attempting to reconnect to MQTT broker
+    config MQTT_USE_SSL
+        bool "SSL Transport"
+        default TRUE
+        help
+            Enable SSL for broker communications.
+            Save the broker's SSL certificate in the components certs folder with the name `mqtt_broker.pem`
+    config MQTT_KEEPALIVE_PERIOD
+        int "Keep Alive period"
+        default 15
+        help
+            Period which MQTT server must receive a transmission from client
+            or connection will be considered closed by server
+    config MQTT_AUTO_KEEPALIVE_ENABLED
+        bool "Enable Auto Keepalive"
+        default TRUE
+        help
+            Enable auto-pings to MQTT server while connected to maintain keepalive window
+    config MQTT_AUTH_ENABLED
+        bool "Broker Authentication"
+        default TRUE
+        help
+            Enable authentication to the broker
+    config MQTT_USERNAME
+        depends on MQTT_AUTH_ENABLED
+        string "MQTT Client Username"
+        default "user"
+        help
+            MQTT Client authentication username
+    config MQTT_PASSWORD
+        depends on MQTT_AUTH_ENABLED
+        string "MQTT Client Password"
+        default "password"
+        help
+            MQTT Client authentication password
+endmenu

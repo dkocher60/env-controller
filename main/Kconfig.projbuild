@@ -1,0 +1,22 @@
+menu "Application Settings"
+    config APP_IMPL_TEMP_CONTROLLER
+        bool "Temperature Controller Mode"
+        default FALSE
+        help
+            Enable temperature controller functionality of application
+
+    config APP_SPARKPLUG_DEVICE_ID_TEMP_CONTROLLER
+        depends on APP_IMPL_TEMP_CONTROLLER
+        string "Temp Controller Device ID"
+        default "temp_controller"
+        help
+            The Sparkplug device ID to be used for MQTT data
+            associated with temperature controller tags
+
+    config APP_SPARKPLUG_DEVICE_ID_DHT
+        string "DHT Sensor Device ID"
+        default "dht"
+        help
+            The Sparkplug device ID to be used for MQTT data
+            associated with the DHT sensor tags
+endmenu
