@@ -22,24 +22,19 @@ static gpio_config_t gpio_tc_config = {
 
 static const char *TAG = "temp-controller";
 
-static float FtoC(float val_f) {
-    return (val_f - 32) / 1.8;
-}
-
 static void temp_controller_task() {
     bool cooling = false;
     for ( ;; ) {
         float temperature = dht_get_data()->temperature;
-        float setpoint_c = FtoC(temp_controller_setpoint);
-        ESP_LOGD(TAG, "Temperature: %f, Setpoint: %f", temperature, setpoint_c);
+        ESP_LOGD(TAG, "Temperature: %f, Setpoint: %f", temperature, temp_controller_setpoint);
 
-        if(!cooling && temperature >= setpoint_c) {
+        if(!cooling && temperature >= temp_controller_setpoint) {
             gpio_set_level(gpio_pin, 1);
             cooling = true;
             ESP_LOGD(TAG, "Enabling cooling functionality");
         }
 
-        if(cooling && temperature < (setpoint_c - CONFIG_TC_DEADBAND)) {
+        if(cooling && temperature < (setpoint_c - temp_controller_setpoint)) {
             gpio_set_level(gpio_pin, 0);
             cooling = false;
             ESP_LOGD(TAG, "Disabling cooling functionality");
