@@ -34,7 +34,7 @@ static void temp_controller_task() {
             ESP_LOGD(TAG, "Enabling cooling functionality");
         }
 
-        if(cooling && temperature < (setpoint_c - temp_controller_setpoint)) {
+        if(cooling && temperature < (temp_controller_setpoint - CONFIG_TC_DEADBAND)) {
             gpio_set_level(gpio_pin, 0);
             cooling = false;
             ESP_LOGD(TAG, "Disabling cooling functionality");
