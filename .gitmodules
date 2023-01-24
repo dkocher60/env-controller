@@ -3,4 +3,4 @@
 	url = https://github.com/espressif/esp-wolfssl
 [submodule "components/esp-tahu/tahu"]
 	path = components/esp-tahu/tahu
-	url = https://github.com/eclipse/tahu
+	url = https://github.com/eclipse/tahu.git
